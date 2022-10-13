@@ -1,0 +1,1 @@
+https://api.openweathermap.org/data/3.0/onecall?lat={lat}&lon={lon}&exclude={part}&appid=2a486f5bbf138ec48900a8c6c87fef7c
