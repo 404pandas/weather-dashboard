@@ -1,15 +1,13 @@
 // Global variables
 // search history as an empty array
-// weather api root url
-// api key
+var apiUrl = "https://api.openweathermap.org/data/3.0/onecall?"
+var apiKey = "2a486f5bbf138ec48900a8c6c87fef7c"
 
 // DOM element references
-// search form
-// search input
-// container/section for today's weather
-// container/section for the forecast 
-// search history container
-
+var searchInput = $("#cityName")
+var weatherNow = $(".weatherNow");
+var forecast = $(".five-day")
+var searchHistory = $(".recentBtn")
 
 // Function to display the search history list.
 function renderSearchHistory() {
