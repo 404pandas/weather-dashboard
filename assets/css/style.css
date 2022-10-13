@@ -45,6 +45,14 @@ h2 {
     
 }
 
+h3 {
+
+}
+
+h4 {
+	font-weight: bold;
+}
+
 /* Aside headers formatting, font, and color */
 aside {
 margin-left: 20px;
