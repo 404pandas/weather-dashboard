@@ -1,17 +1,26 @@
-# Title
-<!-- Don't forget to add a blank line between each string to form a linebreak -->
+# Weather Dashboard
 
 ## Description
 
-Description of project goes here.
+A website to visit to check the weather. Run by a third party API.
 
 ## User Story
 
-User Story goes here.
+AS A traveler
+I WANT to see the weather outlook for multiple cities
+SO THAT I can plan a trip accordingly
 
 ## Tasks Completed
 
-Tasks Completed go here
+GIVEN a weather dashboard with form inputs
+WHEN I search for a city
+THEN I am presented with current and future conditions for that city and that city is added to the search history
+WHEN I view current weather conditions for that city
+THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, and the wind speed
+WHEN I view future weather conditions for that city
+THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity
+WHEN I click on a city in the search history
+THEN I am again presented with current and future conditions for that city
 
 ## Usage
 
@@ -24,9 +33,6 @@ Collaborators on this project included instructional staff, TAs, and students fr
 A special thanks to my daughter, Yennefer. Every day she proves she is small but mighty!
 
 ## References and tutorials utilized
-<!-- Remove any pre-filled resources not used in building of project -->
-<!-- Add to list using the following format: -->
-<!-- * Source Subject: [Source] (https://www.sourceLink.com/) -->
 * Javascript: [W3 Schools](https://www.w3schools.com/js/js_intro.asp/)
 * Markdown: [Markdown Guide](https://www.markdownguide.org/basic-syntax/)
 * CSS: [W3 Schools](https://www.w3schools.com/cssref/)
@@ -37,27 +43,19 @@ A special thanks to my daughter, Yennefer. Every day she proves she is small but
 * API: [Open Weather Map](https://api.openweathermap.org/data/3.0/onecall?lat={lat}&lon={lon}&exclude={part}&appid=2a486f5bbf138ec48900a8c6c87fef7c/)
 
 ## Links
-<!-- Add links using the following format: -->
-<!-- * Link subject: [Link title](https://www.link.com/) -->
 * Deployed site: [Live site-404pandas](linkToLiveSiteHere)
 * Github repo: [Github-404pandas](linkToRepoHere)
 
 ## Screenshots
-<!-- Add screenshots using the following format: -->
-<!-- ![Screenshot alt description](directPathOfScreenshots) -->
 ![Screenshot of live image](directPathHere)
 
-![GIF of functionality](directPathHere)
-
-![GIF of functionality](directPathHere)
-
-![GIF of functionality](directPathHere)
+![GIF of functionality](./assets/images/06-server-side-apis-homework-demo.png)
 
 ## License
 
 MIT License
 
-Copyright (c) [2022] yourNameHere
+Copyright (c) [2022] Mary Elenius
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
