@@ -7,7 +7,7 @@ var apiKey = "2a486f5bbf138ec48900a8c6c87fef7c";
 var searchInput = $("#cityName");
 var weatherNow = $(".weatherNow");
 var weatherFive = $(".five-day");
-var searchHistory = $(".recentBtn");
+var historyContainer = $(".recentBtn");
 
 // Images
 const weatherIcon = data.weather[0];
@@ -27,7 +27,7 @@ function renderSearchHistory() {
     // loop through the history array creating a button for each item
   for (let i = 0; i < searchHistory.length; i++) {
     const element = searchHistory[i];
-    var btnHistory = $(`"<button class="btn recentBtn"></button>"`).text)(element);
+    var btnHistory = $(`"<button class="btn recentBtn"></button>"`).text(element);
       // append to the search history container
       $(".searchBtn").append(btnHistory);
   }
@@ -97,7 +97,7 @@ function renderSearchHistory() {
     $(".forecast-five").append(card1);
   
     // Create elements for a card
-    var datel = $("<h4></h4>").text(date);
+    var datel = $("<h3></h3>").text(date);
     var cloudsl = $("<div></div>").text(clouds);
     var templ = $("<div></div>").text("Temp: "+temp+"°F");
     var windl = $("<div></div>").text("Wind: "+wind+" MPH");
@@ -131,7 +131,7 @@ $(card1).append(date1, clouds1, temp1, wind1, humidity1);
   var lat = location[0].lat;
   var lon = location[0].lon;
   var city = location[0].name;
-  fetch(weatherUrl+"&lat= "+lat+"&lon="+lon+"&units=imperial&exclude=hourly,minutely,alerts&appid="+apiKey)
+  fetch(apiUrl+"&lat= "+lat+"&lon="+lon+"&units=imperial&exclude=hourly,minutely,alerts&appid="+apiKey)
   .then(function (response) {
     return response.json();
   })

@@ -4,7 +4,8 @@
 /*       Universal selector       */
 /* ****************************** */
 * {
-font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+font-weight: 400;
 }
 
 /* ****************************** */
@@ -15,7 +16,7 @@ font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 --header-right: #261360;
 --forecast: #323d4f;
 --search-button: #6991e3;
---common-cities: #aeaeae;
+--recent-cities: #aeaeae;
 --black-text: #000000;
 --white-text: #ffffff;
 --divider: #aeaeae;
@@ -28,7 +29,10 @@ font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 /*Header formatting, font, and color*/
 header {
 background: linear-gradient(to right, var(--header-left), var(--header-right));
-text-align: center;}
+text-align: center;
+font-size: x-large;
+color: var(--white-text);
+}
 
 /*Background formatting, font, and color*/
 body {
@@ -38,36 +42,29 @@ color: var(--black-text);
 
 /* Heading formatting, font, and color */
 h1 {
-color: var(--white-text);
+
 }
 
 h2 {
-    
+   font-size: larger 
 }
 
 h3 {
-
-}
-
-h4 {
-	font-weight: bold;
+font-weight: bold;
+font-size: large;
 }
 
 /* Aside headers formatting, font, and color */
 aside {
 margin-left: 20px;
 margin-right: 30px;
+width: 100%;
 }
 
-button:after {
-	content: "";
-	position: absolute;
-	top: 0;
-	left: 5%;
-	right: 5%;
-	width: 90%;
-	height: 1px;
-	background-image: var(--divider);
+/* Input formatting, font, and color */
+input {
+	width: 100%;
+	height: 40px;
 }
 
 /* Button formatting */
@@ -75,10 +72,23 @@ button {
 background: var(--search-button);
 color: var(--white-text);
 display: inline-block;
-font-weight: 400;
 user-select: none;
 line-height: 1.5;
+width: 90%;
 }
+
+button::after {
+	content: "";
+	position: absolute;
+	top: 230px;
+	left: 5%;
+	right: 5%;
+	width: 90%;
+	height: 1px;
+	background-image: var(--divider);
+}
+
+
 
 /* ****************************** */
 /*        Class selectors         */
@@ -100,18 +110,21 @@ line-height: 1.5;
 }
 
 /* Aside headers formatting, font, and color */
-.aside {
-
-}
-
-/*Card formatting, font, and color*/
-.cardRow {
-background-color: var(--forecast);
+.input {
+width: 90%;
 }
 
 /* Section formatting */
-.section {
+.weatherNow {
+min-height: 200px;
+border: 1px solid var(--black-text);
+}
 
+/*Card formatting, font, and color*/
+.forecast-five {
+background-color: var(--forecast);
+color: var(--white-text);
+max-width: 100%;
 }
 
 /* Article formatting */
@@ -147,9 +160,14 @@ background-color: var(--forecast);
 
 }
 
-/*Nav bar within header formatting, font, and color*/
-#nav {
+/*Button formatting, font, and color*/
+#searchBtn {
+color: var(--white-text);
+background: var(--search-button);
+}
 
+#recentBtn{
+	background: var(--recent-cities)
 }
 
 /* Section formatting */

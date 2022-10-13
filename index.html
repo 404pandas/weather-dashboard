@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <link rel="stylesheet" href="./assets/css/reset.css" />
-        <link rel="stylesheet" href="css/bootstrap.min.cs" crossorigin="anonymous">
+        <link rel= "stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="./assets/css/style.css" />
         <title>Weather Dashboard</title>
     </head>
@@ -16,10 +16,14 @@
         </header>
     <div class="row">
         <aside class="col-4 searchAside">
-            <h2>Search for a City:</h2>
-            <input type="text" id="cityName" name="cityName" >
-            <button class="btn" id="searchBtn">Search</button>
-            <button class="btn" id="recentBtn"></button>
+            <div class="searchContainer>
+                <h2>Search for a City:</h2>
+                <input type="text" id="cityName" name="cityName" >
+                <button class="btn" id="searchBtn">Search</button>
+            </div>
+            <div class="historyContainer">
+                <button class="btn" id="recentBtn"></button>
+            </div>
         </aside>
         <main class="col-8 forecast">
             <div class="weatherNow">
