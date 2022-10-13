@@ -4,14 +4,21 @@
 /*       Universal selector       */
 /* ****************************** */
 * {
-
+font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
 
 /* ****************************** */
 /*        Color selectors         */
 /* ****************************** */
 :root {
---variableName: #000000;
+--header-left: #465ab8;
+--header-right: #261360;
+--forecast: #323d4f;
+--search-button: #6991e3;
+--common-cities: #aeaeae;
+--black-text: #000000;
+--white-text: #ffffff;
+--divider: #aeaeae;
 }
 
 /* ****************************** */
@@ -20,42 +27,49 @@
 
 /*Header formatting, font, and color*/
 header {
-
-}
+background: linear-gradient(to right, var(--header-left), var(--header-right));
+text-align: center;}
 
 /*Background formatting, font, and color*/
 body {
-
+box-sizing: border-box;
+color: var(--black-text);
 }
 
 /* Heading formatting, font, and color */
 h1 {
+color: var(--white-text);
+}
 
+h2 {
+    
 }
 
 /* Aside headers formatting, font, and color */
 aside {
-
+margin-left: 20px;
+margin-right: 30px;
 }
 
-/*Nav bar within header formatting, font, and color*/
-nav {
-
+button:after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 5%;
+	right: 5%;
+	width: 90%;
+	height: 1px;
+	background-image: var(--divider);
 }
 
-/* Section formatting */
-section {
-
-}
-
-/* Article formatting */
-article { 
-
-}
-
-/*Paragraph formatting, font, and color*/
-p {
-
+/* Button formatting */
+button {
+background: var(--search-button);
+color: var(--white-text);
+display: inline-block;
+font-weight: 400;
+user-select: none;
+line-height: 1.5;
 }
 
 /* ****************************** */
@@ -82,9 +96,9 @@ p {
 
 }
 
-/*Nav bar within header formatting, font, and color*/
-.nav {
-
+/*Card formatting, font, and color*/
+.cardRow {
+background-color: var(--forecast);
 }
 
 /* Section formatting */
