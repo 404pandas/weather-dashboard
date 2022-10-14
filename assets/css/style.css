@@ -77,19 +77,6 @@ line-height: 1.5;
 width: 90%;
 }
 
-button::after {
-	content: "";
-	position: absolute;
-	top: 230px;
-	left: 5%;
-	right: 5%;
-	width: 90%;
-	height: 1px;
-	background-image: var(--divider);
-}
-
-
-
 /* ****************************** */
 /*        Class selectors         */
 /* ****************************** */
@@ -114,6 +101,18 @@ button::after {
 width: 90%;
 }
 
+/* Divider formatting, font,and color */
+.searchContainer::after {
+	content: "";
+	position: absolute;
+	top: 230px;
+	left: 5%;
+	right: 5%;
+	width: 90%;
+	height: 1px;
+	background-image: var(--divider);
+}
+
 /* Section formatting */
 .weatherNow {
 min-height: 200px;
@@ -122,6 +121,10 @@ border: 1px solid var(--black-text);
 
 /*Card formatting, font, and color*/
 .forecast-five {
+max-width: 100%;
+}
+
+.cards {
 background-color: var(--forecast);
 color: var(--white-text);
 max-width: 100%;
