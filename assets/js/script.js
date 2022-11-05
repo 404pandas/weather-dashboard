@@ -6,8 +6,8 @@ var onecallUrl =
   city +
   "&units=imperial&appid=" +
   apiKey;
-// api key
-const apiKey = "b917dd3be7f85cdcbd69de2a255eb995";
+// api key from OpenWeatherMap one call subscription
+const apiKey = "";
 
 // DOM element references
 // search form

@@ -12,26 +12,29 @@
     <header>Weather Dashboard</header>
     <main>
       <aside>
-        Search for a City:
-        <!-- Search Box -->
-        <!-- Search button -->
-        <!-- Line div -->
-        <!-- Forecast buttons -->
+        <h2>Search for a City:</h2>
+        <input class="inputBox" placeholder="San Diego"></input>
+        <button id="searchBtn">Search</button>
+        <hr class="solid">
+        <button id="recentBtn">Atlanta</button>
       </aside>
-      <div id="currentConditions">
-        <!-- City Name (Date) Icon
-        Temp: *F
-        Wind: MPH
-        Humidity: % -->
-      </div>
-      <div id="Forecast">
-        5-Day Forecast:
-        <!-- Cards -->
-        <!-- +Date
-        +Icon
-        +Temp: *F
-        Wind: MPH
-        Humidity: % -->
+      <div id="mainContent">
+        <div id="currentConditions">
+          <h2>Atlanta (9/13/2022) <img id=currentIcon src="./assets/images/icons/01d@2x.png"></h2>
+          <p>Temp: *F</p>
+          <p>Wind: MPH</p>
+          <p>Humidity: %</p>
+        </div>
+        <div id="Forecast">
+          <h3>5-Day Forecast:</h3>
+          <div id="cardExample">
+            <h4>9/14/2022</h4>
+            <p><img src="./assets/images/icons/01d@2x.png"></p>
+            <p id="whiteText">Temp: 63.55 *F </p>
+            <p id="whiteText">Wind: 3.94 MPH </p>
+            <p id="whiteText">Humidity: 63% </p>
+          </div>
+        </div>
       </div>
     </main>
     <script src="./assets/js/script.js"></script>

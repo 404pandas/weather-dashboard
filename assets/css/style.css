@@ -4,6 +4,7 @@
 * {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 400;
+  box-sizing: border-box;
 }
 
 /* ****************************** */
@@ -17,14 +18,12 @@
   --recent-cities: #aeaeae;
   --black-text: #000000;
   --white-text: #ffffff;
-  --divider: #aeaeae;
 }
 
 /* ****************************** */
 /*       Element selectors        */
 /* ****************************** */
 
-/*Header formatting, font, and color*/
 header {
   background: linear-gradient(
     to right,
@@ -33,79 +32,79 @@ header {
   );
   text-align: center;
   font-size: x-large;
+  font-weight: bolder;
   color: var(--white-text);
 }
 
-/*Background formatting, font, and color*/
 body {
-  box-sizing: border-box;
   color: var(--black-text);
+  margin: 0px;
+  padding: 0px;
 }
-
-/* Heading formatting, font, and color */
 
 h2 {
   font-size: larger;
+  font-weight: bold;
+  margin: 5px 5px;
 }
 
 h3 {
-  font-weight: bold;
   font-size: large;
+  font-weight: bold;
 }
 
-/* Aside headers formatting, font, and color */
+h4 {
+  font-size: large;
+  font-weight: bold;
+  color: var(--white-text);
+  margin: 5px;
+}
+
 aside {
-  margin-left: 20px;
-  margin-right: 30px;
-  width: 100%;
+  float: left;
+  width: 20%;
+  margin-left: 5px;
 }
 
-/* Input formatting, font, and color */
 input {
   width: 100%;
-  height: 40px;
+  min-height: 35px;
 }
 
-/* Button formatting */
 button {
-  background: var(--search-button);
-  color: var(--white-text);
   display: inline-block;
   user-select: none;
+  padding: 3px;
+  border: none;
+  border-radius: 4px;
   line-height: 1.5;
   width: 90%;
+}
+
+main {
+  display: flex;
+}
+
+p {
+  margin-left: 5px;
+}
+
+img {
+  max-height: 25px;
+  max-width: 25px;
 }
 
 /* ****************************** */
 /*        Class selectors         */
 /* ****************************** */
 
-/* Aside headers formatting, font, and color */
-.input {
+.inputBox {
   width: 90%;
-}
-
-/* Divider formatting, font,and color */
-.searchContainer::after {
-  content: "";
-  position: absolute;
-  top: 230px;
-  left: 5%;
-  right: 5%;
-  width: 90%;
-  height: 1px;
-  background-image: var(--divider);
-}
-
-/* Section formatting */
-.weatherNow {
-  min-height: 200px;
-  border: 1px solid var(--black-text);
-}
-
-/*Card formatting, font, and color*/
-.forecast-five {
-  max-width: 100%;
+  margin: 10px 0;
+  padding: 5px;
+  border: 2px solid var(--recent-cities);
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
 .cards {
@@ -114,11 +113,14 @@ button {
   max-width: 100%;
 }
 
+hr.solid {
+  border-top: 3px solid --var(--search-button);
+  width: 80%;
+}
 /* ****************************** */
 /*          ID selectors          */
 /* ****************************** */
 
-/*Button formatting, font, and color*/
 #searchBtn {
   color: var(--white-text);
   background: var(--search-button);
@@ -126,6 +128,28 @@ button {
 
 #recentBtn {
   background: var(--recent-cities);
+}
+
+#mainContent {
+  width: 70%;
+}
+
+#currentConditions {
+  min-height: 170px;
+  width: 100%;
+  margin-top: 5px;
+  border: 1px solid var(--black-text);
+}
+
+#cardExample {
+  min-height: 200px;
+  max-width: 150px;
+  background: var(--forecast);
+  color: var(--white-text) !important;
+}
+
+#currentIcon {
+  margin: 0px;
 }
 
 /* ****************************** */
