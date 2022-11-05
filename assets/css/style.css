@@ -1,25 +1,23 @@
-/* Reminder: delete empty rulesets */
-
 /* ****************************** */
 /*       Universal selector       */
 /* ****************************** */
 * {
-font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-font-weight: 400;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 400;
 }
 
 /* ****************************** */
 /*        Color selectors         */
 /* ****************************** */
 :root {
---header-left: #465ab8;
---header-right: #261360;
---forecast: #323d4f;
---search-button: #6991e3;
---recent-cities: #aeaeae;
---black-text: #000000;
---white-text: #ffffff;
---divider: #aeaeae;
+  --header-left: #465ab8;
+  --header-right: #261360;
+  --forecast: #323d4f;
+  --search-button: #6991e3;
+  --recent-cities: #aeaeae;
+  --black-text: #000000;
+  --white-text: #ffffff;
+  --divider: #aeaeae;
 }
 
 /* ****************************** */
@@ -28,164 +26,106 @@ font-weight: 400;
 
 /*Header formatting, font, and color*/
 header {
-background: linear-gradient(to right, var(--header-left), var(--header-right));
-text-align: center;
-font-size: x-large;
-color: var(--white-text);
+  background: linear-gradient(
+    to right,
+    var(--header-left),
+    var(--header-right)
+  );
+  text-align: center;
+  font-size: x-large;
+  color: var(--white-text);
 }
 
 /*Background formatting, font, and color*/
 body {
-box-sizing: border-box;
-color: var(--black-text);
+  box-sizing: border-box;
+  color: var(--black-text);
 }
 
 /* Heading formatting, font, and color */
-h1 {
-
-}
 
 h2 {
-   font-size: larger 
+  font-size: larger;
 }
 
 h3 {
-font-weight: bold;
-font-size: large;
+  font-weight: bold;
+  font-size: large;
 }
 
 /* Aside headers formatting, font, and color */
 aside {
-margin-left: 20px;
-margin-right: 30px;
-width: 100%;
+  margin-left: 20px;
+  margin-right: 30px;
+  width: 100%;
 }
 
 /* Input formatting, font, and color */
 input {
-	width: 100%;
-	height: 40px;
+  width: 100%;
+  height: 40px;
 }
 
 /* Button formatting */
 button {
-background: var(--search-button);
-color: var(--white-text);
-display: inline-block;
-user-select: none;
-line-height: 1.5;
-width: 90%;
+  background: var(--search-button);
+  color: var(--white-text);
+  display: inline-block;
+  user-select: none;
+  line-height: 1.5;
+  width: 90%;
 }
 
 /* ****************************** */
 /*        Class selectors         */
 /* ****************************** */
 
-/*Header formatting, font, and color*/
-.header {
-
-}
-
-/*Background formatting, font, and color*/
-.body {
-
-}
-
-/* Heading formatting, font, and color */
-.h1 {
-
-}
-
 /* Aside headers formatting, font, and color */
 .input {
-width: 90%;
+  width: 90%;
 }
 
 /* Divider formatting, font,and color */
 .searchContainer::after {
-	content: "";
-	position: absolute;
-	top: 230px;
-	left: 5%;
-	right: 5%;
-	width: 90%;
-	height: 1px;
-	background-image: var(--divider);
+  content: "";
+  position: absolute;
+  top: 230px;
+  left: 5%;
+  right: 5%;
+  width: 90%;
+  height: 1px;
+  background-image: var(--divider);
 }
 
 /* Section formatting */
 .weatherNow {
-min-height: 200px;
-border: 1px solid var(--black-text);
+  min-height: 200px;
+  border: 1px solid var(--black-text);
 }
 
 /*Card formatting, font, and color*/
 .forecast-five {
-max-width: 100%;
+  max-width: 100%;
 }
 
 .cards {
-background-color: var(--forecast);
-color: var(--white-text);
-max-width: 100%;
-}
-
-/* Article formatting */
-.article { 
-
-}
-
-/*Paragraph formatting, font, and color*/
-.p {
-
+  background-color: var(--forecast);
+  color: var(--white-text);
+  max-width: 100%;
 }
 
 /* ****************************** */
 /*          ID selectors          */
 /* ****************************** */
-/*Header formatting, font, and color*/
-#header {
-
-}
-
-/*Background formatting, font, and color*/
-#body {
-
-}
-
-/* Heading formatting, font, and color */
-#h1 {
-
-}
-
-/* Aside headers formatting, font, and color */
-#aside {
-
-}
 
 /*Button formatting, font, and color*/
 #searchBtn {
-color: var(--white-text);
-background: var(--search-button);
+  color: var(--white-text);
+  background: var(--search-button);
 }
 
-#recentBtn{
-	background: var(--recent-cities)
-}
-
-/* Section formatting */
-#section {
-
-}
-
-/* Article formatting */
-#article { 
-
-}
-
-/*Paragraph formatting, font, and color*/
-#p {
-
+#recentBtn {
+  background: var(--recent-cities);
 }
 
 /* ****************************** */
@@ -194,15 +134,12 @@ background: var(--search-button);
 
 /* Laptop */
 @media screen and (max-width: 1024px) {
-
 }
 
 /* iPads and Tablets */
 @media screen and (max-width: 768px) {
-
 }
 
 /* Mobile devices */
 @media screen and (max-width: 480px) {
-
 }

@@ -1,155 +1,114 @@
 // Global variables
-var searchHistory = [];
-var apiUrl = "https://api.openweathermap.org/data/3.0/onecall?";
-var coordUrl = "http://api.openweathermap.org/geo/1.0/direct?q=";
-var apiKey = "b917dd3be7f85cdcbd69de2a255eb995";
+// search history as an empty array
+// weather api root url
+var onecallUrl =
+  "https://api.openweathermap.org/data/3.0/onecall?q=" +
+  city +
+  "&units=imperial&appid=" +
+  apiKey;
+// api key
+const apiKey = "b917dd3be7f85cdcbd69de2a255eb995";
 
 // DOM element references
-var searchInput = $("#cityName");
-var weatherNow = $(".weatherNow");
-var weatherFive = $(".five-day");
-var searchContainer = $(".searchContainer");
-let cityName = document.getElementById("cityName").value;
-let searchBtn = document.getElementById("searchBtn");
-
-// Function to clear screen
-function clearScreen() {
-  $(".forecast-five").empty();
-  $(".weatherNow").empty();
-}
+// search form
+// search input
+// container/section for today's weather
+// container/section for the forecast
+// search history container
 
 // Function to display the search history list.
 function renderSearchHistory() {
-  $(".recentBtn").remove();
-  for (let i = 0; i < searchHistory.length; i++) {
-    const element = searchHistory[i];
-    var btn1 = $("#recentBtn").text(element);
-    $(".searchAside").append(btn1);
-  }
+  // empty the search history container
+  // loop through the history array creating a button for each item
+  // append to the search history container
 }
 
 // Function to update history in local storage then updates displayed history.
 function appendToHistory(search) {
-  for (let i = 0; i < searchHistory.length; i++) {
-    const history = searchHistory[i];
-    if (history == search) {
-      return;
-    }
-  }
-  searchHistory.push(search);
-  localStorage.setItem("cities", JSON.stringify(searchHistory));
+  // push search term into search history array
+
+  // set search history array to local storage
   renderSearchHistory();
 }
-  
+
 // Function to get search history from local storage
 function initSearchHistory() {
-  if (localStorage.getItem("cities")!==null) {
-    searchHistory= JSON.parse(localStorage.getItem("cities"));
-  }
-  else {
-    localStorage.setItem("cities", JSON.stringify(searchHistory))
-  }
+  // get search history item from local storage
+
+  // set search history array equal to what you got from local storage
   renderSearchHistory();
 }
 
 // Function to display the CURRENT weather data fetched from OpenWeather api.
-function renderCurrentWeather(cityGeo, weather) {
-  var temp = weather.temp;
-  var wind = weather.wind_speed;
-  var humidity = weather.humidity;
-  var clouds = weather.clouds;
-  var date = new Date(weather.sunrise*1000)
-  date = date.toLocaleDateString("en-US");
-  var cityDateCloudsl = $("<h2></h2>").text(cityGeo+" ("+date+") "+clouds);
-  var templ = $("<div></div>").text("Temp: "+temp+"°F");
-  var windl = $("<div></div>").text("Wind: "+wind+" MPH");
-  var humidityl = $("<div></div>").text("Humidity: "+humidity+" %");
-  $(".weatherNow").append(cityDateClouds1, temp1, wind1, humidity1);
+function renderCurrentWeather(city, weather) {
+  // Store response data from our fetch request in variables
+  // temperature, wind speed, etc.
+  // document.create the elements you'll want to put this information in
+  // append those elements somewhere
+  // give them their appropriate content
 }
-  
+
 // Function to display a FORECAST card given an object (from our renderForecast function) from open weather api
 // daily forecast.
 function renderForecastCard(forecast) {
-  var temp = forecast.temp.day;
-  var wind = forecast.wind_speed;
-  var humidity = forecast.humidity;
-  var clouds = forecast.clouds;
-  var date = new Date(forecast.sunrise*1000)
-  date= date.toLocaleDateString("en-US");
-  var card1 = $('"<div class="col-2 cards"></div>"');
-  $(".forecast-five").append(card1);
-  var datel = $("<h3></h3>").text(date);
-  var cloudsl = $("<div></div>").text(clouds);
-  var templ = $("<div></div>").text("Temp: "+temp+"°F");
-  var windl = $("<div></div>").text("Wind: "+wind+" MPH");
-  var humidityl = $("<div></div>").text("Humidity: "+humidity+"%");
-  $(card1).append(date1, clouds1, temp1, wind1, humidity1);
+  // variables for data from api
+  // temp, windspeed, etc.
+  // Create elements for a card
+  // append
+  // Add content to elements
+  // append to forecast section
 }
-  
+
 // Function to display 5 day forecast.
 function renderForecast(dailyForecast) {
-  for (var i = 1; i < i < 6; i++) {
+  // set up elements for this section
+
+  // append
+
+  // loop over dailyForecast
+
+  for (var i = 0; i < dailyForecast.length; i++) {
+    // send the data to our renderForecast function as an argument
     renderForecastCard(dailyForecast[i]);
   }
 }
-  
-// Function to
-function renderItems(cityGeo, data) {
-  renderCurrentWeather(cityGeo, data.current);
-  renderForecast(data.daily);
+
+function renderItems(city, data) {
+  renderCurrentWeather(city, data.list[0]);
+  renderForecast(data.list);
 }
-  
+
 // Fetches weather data for given location from the Weather Geolocation
 // endpoint; then, calls functions to display current and forecast weather data.
 function fetchWeather(location) {
-  const lat = location[0].lat;
-  const lon = location[0].lon;
-  const cityGeo = location[0].name;
-  fetch(apiUrl+"lat="+lat+"&lon="+lon+"&units=imperial&exclude=hourly,minutely,alerts&appid="+apiKey)
-  .then(function (response) {
-    return response.json();
-  })
-  .then(function (data) {
-    renderItems(cityGeo,data);
-    appendToHistory(cityGeo);
-  });
-}
-  
-// Function to
-function fetchCoords(cityName) {
-  fetch(coordUrl+cityName+"&limit=1&appid="+apiKey)
-  .then(function (response) {
-    return response.json();
-  })
-  .then(function (data) {
-    if (!data[0]) {
-      return;
-    }
-    clearScreen();
-    fetchWeather(data);
-  });
+  // varialbles of longitude, latitude, city name - coming from location
+  // api url
+  // fetch, using the api url, .then that returns the response as json, .then that calls renderItems(city, data)
 }
 
-// Function to
+function fetchCoords(search) {
+  // variable for you api url
+  // fetch with your url, .then that returns the response in json, .then that does 2 things - calls appendToHistory(search), calls fetchWeather(the data)
+}
+
 function handleSearchFormSubmit(e) {
-  console.log("You clicked the search button")
-  if (!searchInput.val()) {
+  // Don't continue if there is nothing in the search form
+  if (!searchInput.value) {
     return;
   }
+
   e.preventDefault();
-  var search = searchInput.val().trim();
+  var search = searchInput.value.trim();
   fetchCoords(search);
-  searchInput.val("");
+  searchInput.value = "";
 }
-  
+
 function handleSearchHistoryClick(e) {
-  e.preventDefault();
-  console.log("You clicked a city history button");
-  var search = $(this).text().trim();
-  console.log("City: " +search);
+  // grab whatever city is is they clicked
+
   fetchCoords(search);
 }
-  
-initSearchHistory(); 
-$("#searchBtn").on("click", handleSearchFormSubmit);
-$("#recentBtn").on("click", handleSearchHistoryClick);
+
+initSearchHistory();
+// click event to run the handleFormSubmit
+// click event to run the handleSearchHistoryClick
