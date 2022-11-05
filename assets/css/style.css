@@ -24,6 +24,7 @@
 /*       Element selectors        */
 /* ****************************** */
 
+/* Main formatting */
 header {
   background: linear-gradient(
     to right,
@@ -42,6 +43,20 @@ body {
   padding: 0px;
 }
 
+main {
+  display: flex;
+}
+
+p {
+  margin-left: 5px;
+}
+
+img {
+  max-height: 25px;
+  max-width: 25px;
+}
+
+/* Headers formatting */
 h2 {
   font-size: larger;
   font-weight: bold;
@@ -60,6 +75,7 @@ h4 {
   margin: 5px;
 }
 
+/* Aside formatting */
 aside {
   float: left;
   width: 20%;
@@ -81,23 +97,11 @@ button {
   width: 90%;
 }
 
-main {
-  display: flex;
-}
-
-p {
-  margin-left: 5px;
-}
-
-img {
-  max-height: 25px;
-  max-width: 25px;
-}
-
 /* ****************************** */
 /*        Class selectors         */
 /* ****************************** */
 
+/* Aside formatting */
 .inputBox {
   width: 90%;
   margin: 10px 0;
@@ -107,20 +111,24 @@ img {
   box-sizing: border-box;
 }
 
+/* Main formatting */
 .cards {
   background-color: var(--forecast);
   color: var(--white-text);
   max-width: 100%;
 }
 
+/* Divider formatting */
 hr.solid {
   border-top: 3px solid --var(--search-button);
   width: 80%;
 }
+
 /* ****************************** */
 /*          ID selectors          */
 /* ****************************** */
 
+/* Aside formatting */
 #searchBtn {
   color: var(--white-text);
   background: var(--search-button);
@@ -130,6 +138,7 @@ hr.solid {
   background: var(--recent-cities);
 }
 
+/* Main formatting */
 #mainContent {
   width: 70%;
 }
