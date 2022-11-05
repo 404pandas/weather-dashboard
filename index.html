@@ -13,10 +13,11 @@
     <main>
       <aside>
         <h2>Search for a City:</h2>
-        <input class="inputBox" placeholder="San Diego"></input>
+        <input id="inputBox" placeholder="San Diego"></input>
         <button id="searchBtn">Search</button>
         <hr class="solid">
-        <button id="recentBtn">Atlanta</button>
+        <div id="historyContainer">
+        <button id="recentBtn">Atlanta</button></div>
       </aside>
       <div id="mainContent">
         <div id="currentConditions">
@@ -25,7 +26,7 @@
           <p>Wind: MPH</p>
           <p>Humidity: %</p>
         </div>
-        <div id="Forecast">
+        <div id="forecast">
           <h3>5-Day Forecast:</h3>
           <div id="cardExample">
             <h4>9/14/2022</h4>

@@ -1,20 +1,29 @@
 // Global variables
-// search history as an empty array
-// weather api root url
+var cityState = "";
+const apiKey = "2a486f5bbf138ec48900a8c6c87fef7c"; // search history as an empty array
+var search = "";
+var lat;
+var lon;
+// Weather API endpoint
 var onecallUrl =
   "https://api.openweathermap.org/data/3.0/onecall?q=" +
-  city +
+  cityState +
   "&units=imperial&appid=" +
   apiKey;
-// api key from OpenWeatherMap one call subscription
-const apiKey = "";
 
 // DOM element references
 // search form
+const buttonSearch = document.getElementById("searchBtn");
 // search input
+const inputSearch = document.getElementById("inputBox");
+// history button
+const buttonRecent = document.getElementById("recentBtn");
 // container/section for today's weather
+const currentContainer = document.getElementById("currentConditions");
 // container/section for the forecast
+const forecastContainer = document.getElementById("forecast");
 // search history container
+const historyContainer = document.getElementById("historyContainer");
 
 // Function to display the search history list.
 function renderSearchHistory() {
@@ -40,7 +49,7 @@ function initSearchHistory() {
 }
 
 // Function to display the CURRENT weather data fetched from OpenWeather api.
-function renderCurrentWeather(city, weather) {
+function renderCurrentWeather(cityState, weather) {
   // Store response data from our fetch request in variables
   // temperature, wind speed, etc.
   // document.create the elements you'll want to put this information in
@@ -73,42 +82,67 @@ function renderForecast(dailyForecast) {
   }
 }
 
-function renderItems(city, data) {
-  renderCurrentWeather(city, data.list[0]);
+function renderItems(cityState, data) {
+  renderCurrentWeather(cityState, data.list[0]);
   renderForecast(data.list);
 }
 
 // Fetches weather data for given location from the Weather Geolocation
 // endpoint; then, calls functions to display current and forecast weather data.
 function fetchWeather(location) {
-  // varialbles of longitude, latitude, city name - coming from location
+  // varialbles of longitude, latitude, cityState name - coming from location
   // api url
-  // fetch, using the api url, .then that returns the response as json, .then that calls renderItems(city, data)
+  // fetch, using the api url, .then that returns the response as json, .then that calls renderItems(cityState, data)
 }
 
 function fetchCoords(search) {
-  // variable for you api url
-  // fetch with your url, .then that returns the response in json, .then that does 2 things - calls appendToHistory(search), calls fetchWeather(the data)
-}
+  var cityState = search;
+  var coordsUrl =
+    "http://api.openweathermap.org/geo/1.0/direct?q=" +
+    cityState +
+    ",US&limit=5&appid=" +
+    apiKey;
 
+  fetch(coordsUrl).then(function (response) {
+    console.log(response);
+    console.log(response.statusText);
+    if (response.ok) {
+      response.json().then(function (data) {
+        console.log(data);
+        if (data.length === 0) {
+          return;
+        }
+        var lat = data[0].lat;
+        var lon = data[0].lon;
+        console.log("latitude: " + lat + "\nlongitude: " + lon);
+
+        appendToHistory(search);
+        fetchWeather(lat, lon, cityState);
+      });
+    }
+  });
+}
 function handleSearchFormSubmit(e) {
-  // Don't continue if there is nothing in the search form
-  if (!searchInput.value) {
+  console.log("Search submitted");
+  if (!inputSearch.value) {
     return;
   }
-
   e.preventDefault();
-  var search = searchInput.value.trim();
+
+  console.log("Search = " + inputSearch.value);
+  var search = inputSearch.value.trim();
   fetchCoords(search);
-  searchInput.value = "";
+  inputSearch.value = "";
 }
 
 function handleSearchHistoryClick(e) {
-  // grab whatever city is is they clicked
+  console.log("History called");
+  console.log("cityState: = " + e.target.textContent);
+  var search = e.target.textContent;
 
   fetchCoords(search);
 }
 
 initSearchHistory();
-// click event to run the handleFormSubmit
-// click event to run the handleSearchHistoryClick
+buttonSearch.addEventListener("click", handleSearchFormSubmit);
+buttonRecent.addEventListener("click", handleSearchHistoryClick);
