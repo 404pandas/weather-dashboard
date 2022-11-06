@@ -38,6 +38,9 @@ function renderSearchHistory() {
     historyButton.setAttribute("id", "recentBtn", city);
     historyButton.textContent = city;
     buttonRecent.appendChild(historyButton);
+    document
+      .getElementById(city)
+      .addEventListener("click", handleSearchHistoryClick);
   }
 }
 
@@ -49,21 +52,46 @@ function appendToHistory(search) {
   renderSearchHistory();
 }
 
-// Function to get search history from local storage
-function initSearchHistory() {
-  // get search history item from local storage
-
-  // set search history array equal to what you got from local storage
-  renderSearchHistory();
-}
-
 // Function to display the CURRENT weather data fetched from OpenWeather api.
 function renderCurrentWeather(city, weather) {
   // Store response data from our fetch request in variables
   // temperature, wind speed, etc.
   // document.create the elements you'll want to put this information in
+  currentContainer.innerHTML = "";
+  var currentCard = document.createElement("div");
+  var currentName = document.createElement("h2");
+  var currentTemp = document.createElement("p");
+  var currentWind = document.createElement("p");
+  var currentHumidity = document.createElement("p");
+
+  // Attributes for current conditions
+  currentCard.setAttribute("id", "currentConditions");
+
+  // Icon selection
+  //
+  //   id = currentIcon
+  //
+  // Icon Selection
+
+  // Formatting for Date, applies to current and forecast
+  var date = new Date();
+  var dd = String(date.getDate()).padStart(2, "0");
+  var mm = String(date.getMonth() + 1).padStart(2, "0");
+  var yyyy = date.getFullYear();
+  date = mm + "/" + dd + "/" + yyyy;
+
   // append those elements somewhere
+  currentContainer.appendChild(currentName);
+  currentContainer.appendChild(currentCard);
+  currentCard.appendChild(currentTemp);
+  currentCard.appendChild(currentWind);
+  currentCard.appendChild(currentHumidity);
+
   // give them their appropriate content
+  currentName.innerHTML = city + " (" + date + ") " + "iconHere";
+  currentTemp.innerText = "Temp: " + weather.main.temp + " °F";
+  currentWind.innerText = "Wind: " + weather.wind.speed + " mph";
+  currentHumidity.innerText = "Humidity: " + weather.main.humidity + "%";
 }
 
 // Function to display a FORECAST card given an object (from our renderForecast function) from open weather api
@@ -136,11 +164,11 @@ function fetchCoords(search) {
         if (data.length === 0) {
           return;
         }
-        console.log(data);
         // Creates variables from lat and long values
-        var lat = data[0].lat;
-        var lon = data[0].lon;
+        lat = data[0].lat;
+        lon = data[0].lon;
         search = data[0].name;
+        city = search;
         // Logs values for long and lat
         console.log("latitude: " + lat + "\nlongitude: " + lon);
 
@@ -159,8 +187,8 @@ function handleSearchFormSubmit(e) {
   }
   e.preventDefault();
 
-  console.log("Search = " + inputSearch.value);
   search = inputSearch.value.trim();
+  console.log("Search = " + search);
   fetchCoords(search);
   inputSearch.value = "";
 }
@@ -172,5 +200,6 @@ function handleSearchHistoryClick(e) {
   fetchCoords(search);
 }
 
-initSearchHistory();
-buttonSearch.addEventListener("click", handleSearchFormSubmit);
+renderSearchHistory();
+
+searchBtn.addEventListener("click", handleSearchFormSubmit);
