@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="./assets/css/reset.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>Weather Dashboard</title>
+  </head>
+  <body>
+    <header>Weather Dashboard</header>
+    <main>
+      <aside>
+        <h2>Search for a City:</h2>
+        <input id="inputBox" placeholder="San Diego"></input>
+        <button id="searchBtn">Search</button>
+        <hr class="solid">
+        <div id="historyContainer">
+        <button id="recentBtn">Atlanta</button></div>
+      </aside>
+      <div id="mainContent">
+        <div id="currentConditions">
+          <h2>Atlanta (9/13/2022) <img id=currentIcon src="./assets/images/icons/01d@2x.png"></h2>
+          <p>Temp: *F</p>
+          <p>Wind: MPH</p>
+          <p>Humidity: %</p>
+        </div>
+        <div id="forecast">
+          <h3>5-Day Forecast:</h3>
+          <div id="cardExample">
+            <h4>9/14/2022</h4>
+            <p><img src="./assets/images/icons/01d@2x.png"></p>
+            <p id="whiteText">Temp: 63.55 *F </p>
+            <p id="whiteText">Wind: 3.94 MPH </p>
+            <p id="whiteText">Humidity: 63% </p>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="./assets/js/script.js"></script>
+  </body>
+</html>
