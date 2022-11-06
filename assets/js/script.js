@@ -57,6 +57,12 @@ function initSearchHistory() {
   renderSearchHistory();
 }
 
+// Function to clear local storage
+const clearHistory = document.getElementById("clearHistory");
+clearHistory.onclick = function () {
+  localStorage.clear();
+};
+
 // Function to display the CURRENT weather data fetched from OpenWeather api.
 function renderCurrentWeather(city, weather) {
   // Store response data from our fetch request in variables
