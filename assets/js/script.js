@@ -34,7 +34,6 @@ function renderSearchHistory() {
     // Creates button for search history
     var historyButton = document.createElement("button");
     // Sets id for generated button to recentBtn so match css
-    historyButton.setAttribute("class", "button");
     historyButton.setAttribute("id", "recentBtn", city);
     historyButton.textContent = city;
     buttonRecent.appendChild(historyButton);
@@ -97,34 +96,29 @@ function renderForecast(dailyForecast) {
   }
 }
 
-function renderItems(city, data) {
-  renderCurrentWeather(city, data.list[0]);
-  renderForecast(data.list);
-}
-
 // Fetches weather data for given location from the Weather Geolocation
 // endpoint; then, calls functions to display current and forecast weather data.
-function fetchWeather(lat, lon, city) {
-  // api url
-  var onecallUrl =
-    "https://api.openweathermap.org/data/3.0/onecall?lat=" +
-    lat +
-    "&lon=" +
-    lon +
-    "&appid=" +
-    apiKey;
+// function fetchWeather(lat, lon, city) {
+//   // api url
+//   var onecallUrl =
+//     "https://api.openweathermap.org/data/3.0/onecall?lat=" +
+//     lat +
+//     "&lon=" +
+//     lon +
+//     "&appid=" +
+//     apiKey;
 
-  // fetch, using the api url, .then that returns the response as json, .then that calls renderItems(cityState, data)
-  fetch(onecallUrl).then(function (response) {
-    if (response.ok) {
-      response.json().then(function (data) {
-        renderItems(city, data);
-      });
-    } else {
-      return;
-    }
-  });
-}
+//   // fetch, using the api url, .then that returns the response as json, .then that calls renderItems(cityState, data)
+//   fetch(onecallUrl).then(function (response) {
+//     if (response.ok) {
+//       response.json().then(function (data) {
+//         renderItems(city, data);
+//       });
+//     } else {
+//       return;
+//     }
+//   });
+// }
 
 // Function to fetch coordinates
 function fetchCoords(search) {
@@ -171,6 +165,7 @@ function handleSearchFormSubmit(e) {
   inputSearch.value = "";
 }
 
+// Function to call coords from history list
 function handleSearchHistoryClick(e) {
   console.log("History called");
   console.log("City: = " + e.target.textContent);
@@ -178,5 +173,5 @@ function handleSearchHistoryClick(e) {
   fetchCoords(search);
 }
 
-initSearchHistory();
+renderSearchHistory();
 buttonSearch.addEventListener("click", handleSearchFormSubmit);
