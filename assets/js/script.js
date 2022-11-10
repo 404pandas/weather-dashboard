@@ -48,27 +48,27 @@ function appendToHistory(search) {
   renderSearchHistory();
 }
 
-// Function to get search history from local storage
-function initSearchHistory() {
-  // get search history item from local storage
-
-  // set search history array equal to what you got from local storage
-  renderSearchHistory();
-}
-
-// Function to clear local storage
-const clearHistory = document.getElementById("clearHistory");
-clearHistory.onclick = function () {
-  localStorage.clear();
-};
-
 // Function to display the CURRENT weather data fetched from OpenWeather api.
 function renderCurrentWeather(city, weather) {
+  currentContainer.innerHTML = "";
   // Store response data from our fetch request in variables
-  // temperature, wind speed, etc.
   // document.create the elements you'll want to put this information in
+  var cityDate = document.createElement("h2");
+  var currentTemp = document.createElement("p");
+  var currentWind = document.createElement("p");
+  var currentHumidity = document.createElement("p");
+
   // append those elements somewhere
+  currentContainer.appendChild(cityDate);
+  cityDate.appendChild(currentTemp);
+  cityDate.appendChild(currentWind);
+  cityDate.appendChild(currentHumidity);
+
   // give them their appropriate content
+  cityDate.innerHTML = city + date + "icon";
+  currentTemp.innerText = weather.main.temp;
+  currentWind.innerText = weather.wind.speed;
+  currentHumidity.innerText = weather.main.humidity;
 }
 
 // Function to display a FORECAST card given an object (from our renderForecast function) from open weather api
@@ -96,29 +96,34 @@ function renderForecast(dailyForecast) {
   }
 }
 
+function renderItems(city, data) {
+  renderCurrentWeather(city, data.list[0]);
+  renderForecast(data.list);
+}
+
 // Fetches weather data for given location from the Weather Geolocation
 // endpoint; then, calls functions to display current and forecast weather data.
-// function fetchWeather(lat, lon, city) {
-//   // api url
-//   var onecallUrl =
-//     "https://api.openweathermap.org/data/3.0/onecall?lat=" +
-//     lat +
-//     "&lon=" +
-//     lon +
-//     "&appid=" +
-//     apiKey;
+function fetchWeather(lat, lon, city) {
+  // api url
+  var onecallUrl =
+    "https://api.openweathermap.org/data/3.0/onecall?lat=" +
+    lat +
+    "&lon=" +
+    lon +
+    "&appid=" +
+    apiKey;
 
-//   // fetch, using the api url, .then that returns the response as json, .then that calls renderItems(cityState, data)
-//   fetch(onecallUrl).then(function (response) {
-//     if (response.ok) {
-//       response.json().then(function (data) {
-//         renderItems(city, data);
-//       });
-//     } else {
-//       return;
-//     }
-//   });
-// }
+  // fetch, using the api url, .then that returns the response as json, .then that calls renderItems(cityState, data)
+  fetch(onecallUrl).then(function (response) {
+    if (response.ok) {
+      response.json().then(function (data) {
+        renderItems(city, data);
+      });
+    } else {
+      return;
+    }
+  });
+}
 
 // Function to fetch coordinates
 function fetchCoords(search) {
